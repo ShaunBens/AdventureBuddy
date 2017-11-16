@@ -2,6 +2,7 @@
 //--The name and phone number will be open variables to vary from user to user
 // 
 /* global firebase */
+/* global google */
 //Document ready function
 $(function() {
 
@@ -23,7 +24,7 @@ $(function() {
 
         var name = $("#fullName").val().trim();
         console.log("Name: " + name);
-        var phone = $("#phoneNumbert").val().trim();
+        var phone = $("#phoneNumber").val().trim();
         console.log("Phone: " + phone);
 
         database.ref().push({
@@ -33,13 +34,12 @@ $(function() {
 
         });
 
-        var form = document.getElementById("loginInfo");
+        var form = document.getElementById("contactForm");
         form.reset();
         // alert("Train Successfully Added!"); SHOULD BE A MODAL SAYING THANK YOU OR SOMETHING?
         return false;
 
     });
-
 
 
     // var unirest = require('unirest');
