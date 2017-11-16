@@ -1,8 +1,25 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
+
+.container-fluid {
+    background-color: #338EFF;
+    color: white;
+
+}
+
+.icon-bar {
+    background-color: #338EFF;
+    color: white;
+}
+
+.panel-heading {
+    background-color: #338EFF;
+    color: white;
+}
+
 body {
-  background-color:#fff;
-  -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    font: normal 14px Roboto, arial, sans-serif;
 }
 
 .container {
@@ -17,16 +34,16 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 15px;
-    border-color:#d2d2d2;
+    border-color: #d2d2d2;
     border-width: 5px;
-    box-shadow:0 1px 0 #cfcfcf;
+    box-shadow: 0 1px 0 #cfcfcf;
 }
 
-h4 { 
- border:0 solid #fff; 
- border-bottom-width:1px;
- padding-bottom:10px;
- text-align: center;
+h4 {
+    border: 0 solid #fff;
+    border-bottom-width: 1px;
+    padding-bottom: 10px;
+    text-align: center;
 }
 
 .form-control {
