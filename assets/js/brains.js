@@ -21,9 +21,9 @@ $(function() {
     $("#infoInput").on("click", function(event) {
         event.preventDefault();
 
-        var name = $("#nameInput").val().trim();
+        var name = $("#fullName").val().trim();
         console.log("Name: " + name);
-        var phone = $("#phoneInput").val().trim();
+        var phone = $("#phoneNumbert").val().trim();
         console.log("Phone: " + phone);
 
         database.ref().push({
