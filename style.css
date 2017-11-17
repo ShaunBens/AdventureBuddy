@@ -1,0 +1,152 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+
+.container-fluid {
+    background-color: #338EFF;
+    color: white;
+
+}
+
+.icon-bar {
+    background-color: #338EFF;
+    color: white;
+}
+
+.panel-heading {
+    background-color: #338EFF;
+    color: white;
+}
+
+body {
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    font: normal 14px Roboto, arial, sans-serif;
+}
+
+.container {
+    padding: 25px;
+    position: fixed;
+}
+
+#contactForm {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color: #d2d2d2;
+    border-width: 5px;
+    box-shadow: 0 1px 0 #cfcfcf;
+}
+
+h4 {
+    border: 0 solid #fff;
+    border-bottom-width: 1px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+/* Width at 980px and below */
+
+@media screen and (max-width: 980px) {
+    body {
+        background-color: white;
+    }
+
+    .wrapper {
+        /* Box-model */
+        width: 100%;
+        padding: 20px;
+    }
+
+    .map-div {
+        width: 95%;
+    }
+
+    .weather {
+        width: 50%;
+    }
+
+    #contact {
+        float: right;
+        min-width: 30%;
+
+    }
+
+}
+
+
+/* Width at 768px and below */
+
+@media screen and (max-width: 768px) {
+    body {
+        background-color: black;
+    }
+
+    .wrapper {
+        /* Box-model */
+        width: 100%;
+        padding: 20px;
+    }
+
+    .map-div {
+        width: 95%;
+    }
+
+    .weather {
+        width: 50%;
+    }
+
+    .nav {
+        float: left;
+        width: 50%;
+    }
+
+    #contact {
+        clear: both;
+        float: left;
+        min-width: 95%;
+    }
+}
+
+/* Width at 640px and below */
+
+@media screen and (max-width: 640px) {
+
+    body {
+        background-color: white;
+    }
+
+    .wrapper {
+        /* Box-model */
+        width: 100%;
+        padding: 20px;
+    }
+
+    #contact {
+        clear: both;
+        float: left;
+        width: 50%;
+    }
+
+    .map-div {
+        width: 95%;
+    }
+
+    .weather {
+        width: 50%;
+    }
+
+    .nav {
+        float: left;
+        width: 50%;
+    }
+}
