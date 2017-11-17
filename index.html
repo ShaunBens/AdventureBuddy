@@ -6,7 +6,7 @@
 	<title>Adventure Buddy App</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
@@ -74,10 +74,28 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Contact Info</h3>
+						<h3 class="panel-title" id="contact">Contact Info</h3>
 					</div>
 					<div class="panel-body">
-						<p>insert Name and Phone Number Form</p>
+						<p>
+							<form id="contactForm" class="form-horizontal">
+								<div class="form-group">
+									<label class="col-xs-7 control-label">Full name</label>
+									<div class="col-xs-9">
+										<input type="text" class="form-control" name="fName" id="fullName" placeholder="Full name" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-xs-7 control-label">Phone number</label>
+									<div class="col-xs-9">
+										<input type="text" class="form-control" id="phoneNumber" name="pNumber" placeholder="Phone number" />
+										<br><br>
+										<input type="submit" value="Submit" id="submitButton">
+									</div>
+								</div>
+							</form>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -90,6 +108,8 @@
 
 	<!-- Bootstrap JavaScript CDN -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="timesheet.js">
+	</script>
 
 </body>
 

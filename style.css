@@ -27,7 +27,7 @@ body {
     position: fixed;
 }
 
-.form-login {
+#contactForm {
     background-color: #EDEDED;
     padding-top: 10px;
     padding-bottom: 20px;
@@ -52,4 +52,101 @@ h4 {
 
 .wrapper {
     text-align: center;
+}
+
+/* Width at 980px and below */
+
+@media screen and (max-width: 980px) {
+    body {
+        background-color: white;
+    }
+
+    .wrapper {
+        /* Box-model */
+        width: 100%;
+        padding: 20px;
+    }
+
+    .map-div {
+        width: 95%;
+    }
+
+    .weather {
+        width: 50%;
+    }
+
+    #contact {
+        float: right;
+        min-width: 30%;
+
+    }
+
+}
+
+
+/* Width at 768px and below */
+
+@media screen and (max-width: 768px) {
+    body {
+        background-color: black;
+    }
+
+    .wrapper {
+        /* Box-model */
+        width: 100%;
+        padding: 20px;
+    }
+
+    .map-div {
+        width: 95%;
+    }
+
+    .weather {
+        width: 50%;
+    }
+
+    .nav {
+        float: left;
+        width: 50%;
+    }
+
+    #contact {
+        clear: both;
+        float: left;
+        min-width: 95%;
+    }
+}
+
+/* Width at 640px and below */
+
+@media screen and (max-width: 640px) {
+
+    body {
+        background-color: white;
+    }
+
+    .wrapper {
+        /* Box-model */
+        width: 100%;
+        padding: 20px;
+    }
+
+    #contact {
+        clear: both;
+        float: left;
+        width: 50%;
+    }
+
+    .map-div {
+        width: 95%;
+    }
+
+    .weather {
+        width: 50%;
+    }
+
+    .nav {
+        float: left;
+        width: 50%;
+    }
 }
