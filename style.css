@@ -1,8 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+
 
 .container-fluid {
     background-color: #338EFF;
     color: white;
+    text-align: center;
 
 }
 
