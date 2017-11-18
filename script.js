@@ -50,6 +50,7 @@ $(function() {
     $("#formSubmit").on("click", function(event) {
         event.preventDefault();
 
+
         var name = $("#fullName").val().trim();
         // console.log("Name: " + name);
         var phone = $("#phoneNumber").val().trim();
@@ -66,7 +67,7 @@ $(function() {
 
         var form = document.getElementById("inputForm");
         form.reset();
-        // return false;
+        $("#loginWindow").modal("hide");
 
     });
 
