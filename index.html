@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Adventure Buddy App</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body>
+    <!--<div class="container-fluid">-->
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        <h2 class="brand" href="indexmain.html">AdventureBuddy</h2>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><button class="btn btn-primary" data-toggle="modal" href="#loginWindow" style="margin-right: 4px; margin-top: 8px;">Sign In</button>
+                            </li>
+                            <li><button class="btn btn-primary" data-toggle="modal" href="#aboutWindow" style="margin-right: 4px; margin-top: 8px;">About</button></li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+    <!--</div>-->
+
+
+    <!--Start of hidden Sign in Form-->
+
+    <div class="modal fade" id="loginWindow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">We need some information to get started.</h3>
+                </div>
+                <!-- Body (form) -->
+                <div class="modal-body">
+                    <form id="inputForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="First Last" required />
+                            <label>Phone Number</label>
+                            <input type="text" id="phoneNumber" class="form-control" placeholder="XXX-XXX-XXXX" required />
+                        </div>
+                </div>
+
+                <!-- button -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block" id="formSubmit" value="Submit">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--End hidden Sign in Form -->
+
+
+    <!--About Page-->
+    <div class="modal fade" id="aboutWindow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">How it Works</h3>
+                </div>
+                <!-- Body (form) -->
+                <div class="modal-body">
+                    <p>Upon clicking "Get Started" at the bottom of this box, we will ask to aquire your location information.</p>
+                    <p>This information is passed to our servers along with your full name and phone number that you should enter into our "Sign In" box.</p>
+
+                    <p>From there, your location is updated every 30 seconds on our servers and if it stops moving for a period of 10 minutes a prompt will pop up asking you if you're OK. If so, just hit "Yes, I'm OK" and the prompt will disappear.</p>
+
+                    <p>If no user input is registered within 2 minutes, emergency serivces will be sent your:</p>
+
+                    <p>Name<br> Phone Number<br> and Geolocation coordinates</p>
+
+                    <p>The emergency services will use this info to track your location and find you A.S.A.P!</p>
+
+                    <p>Enjoy our easy to use app and trek on with your personal "AdventureBuddy!"</p>
+                </div>
+
+                <!-- button -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block" data-dismiss="modal" href="#inputForm" id="getStarted">Get Started!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End hidden About us form -->
+
+    <!-- Map div -->
+    <div class="map-canvas">
+        <div id="map" styl="width: 100%; height: auto;">
+
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js " integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa " crossorigin="anonymous "></script>
+    <script type="text/javascript " src="script.js "></script>
+</body>
+
+</html>
