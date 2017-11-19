@@ -19,16 +19,16 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header" style="text-align: center;">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                            <h3 class="brand" href="index.html" style="margin-left: 2% text-align: center">AdventureBuddy</h3>
-                        </div>
-                    
-                    
+                        <h3 class="brand" href="index.html" style="margin-left: 2% text-align: center">AdventureBuddy</h3>
+                    </div>
+
+
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
@@ -38,7 +38,7 @@
                             <li><button class="btn btn-primary" data-toggle="modal" href="#aboutWindow" style="margin-right: 4px; margin-top: 8px;">About</button></li>
                         </ul>
                         <!-- Brand and toggle get grouped for better mobile display -->
-                        
+
                     </div>
                     <!-- /.navbar-collapse -->
                 </div>
@@ -123,6 +123,50 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <button type="button" class="btn btn-danger btn-block" data-toggle="modal" href="#emsContact" value="EMERGENCY!">EMERGENCY!</button>
+        </div>
+    </div>
+    <!-- End EMS button -->
+
+    <!-- Begin EMS hidden modal -->
+    <div class="modal fade" id="emsContact">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title" style="text-align: center;">Contact Emergency Services?</h3>
+                </div>
+                <!-- Body (form) -->
+                <div class="modal-body">
+                    <p style="font-weight: bold; font-size: 20px; text-shadow: .7px .5px red; text-align: center;">CLICKING YES WILL IMMEDIATELY SEND OUT A DISTRESS CALL.</p>
+                    <p style="font-weight: bold; font-size: 18px; text-align: center;">Click "Cancel" to stop this request</p>
+                </div>
+                <!-- button -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" style="float: left; padding: 10px 40px">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" href="#confirmEMS" id="contactEMS" style="float: right; padding: 10px 50px">YES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End EMS contact modal -->
+
+    <!-- Begin EMS on their way modal -->
+    <div class="modal fade" id="confirmEMS">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title" style="text-align: center;">STAY WHERE YOU ARE!</h3>
+                </div>
+                <!--Body -->
+                <div class="modal-body">
+                    <p style="font-weight: bold; font-size: 18px; text-align: center;">Emergency Services On Their Way!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                </div>
+            </div>
         </div>
     </div>
 
