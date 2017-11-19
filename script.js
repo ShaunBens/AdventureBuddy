@@ -3,10 +3,14 @@
 // 
 /* global firebase */
 /* global google */
+/* global position */
 //Document ready function
 $(function() {
     // Upon page load, We show our About modal to give the user directions and to grab their location data.
     $("#aboutWindow").modal("show");
+
+
+
 
     // Initialize Firebase
     var config = {
@@ -24,11 +28,17 @@ $(function() {
 
     var lat = "";
     var lng = "";
+    var watchID = "";
 
     $("#getStarted").on("click", function() {
         function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(copyPosition);
+                var optn = {
+                    enableHighAccuracy: true,
+                    timeout: Infinity,
+                    maximumAge: 5000
+                };
+                watchID = navigator.geolocation.watchPosition(copyPosition);
             }
             else {
                 alert("Geolocation is not supported by this browser.");
@@ -39,12 +49,46 @@ $(function() {
         getLocation();
 
         function copyPosition(position) {
+            var gLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+            var mapOtn = {
+                zoom: 15,
+                center: gLatLng,
+                mapTypeId: google.maps.MapTypeId.ROAD
+            };
+
+            var Pmap = document.getElementById("map");
+
+            var map = new google.maps.Map(Pmap, mapOtn);
+
+            addMarker(map, gLatLng, "Your Location: " + gLatLng, "You Are Here!");
+
             lat = position.coords.latitude;
             lng = position.coords.longitude;
+
+        }
+
+        function addMarker(map, gLatLng, title, content) {
+            var markerOptn = {
+                position: gLatLng,
+                map: map,
+                title: title,
+                animation: google.maps.Animation.DROP
+            };
+
+            var marker = new google.maps.Marker(markerOptn);
+
+            var infoWindow = new google.maps.InfoWindow({ content: content, position: gLatLng });
+
+            google.maps.event.addListener(marker, "click", function() {
+                infoWindow.open(map);
+            });
         }
         $("#loginWindow").modal("show");
 
     });
+
+
 
 
     $("#formSubmit").on("click", function(event) {
