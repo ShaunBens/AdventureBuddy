@@ -92,7 +92,12 @@ $(function() {
 
 
     $("#formSubmit").on("click", function(event) {
+
         event.preventDefault();
+        if ($("#fullName").val() === "" || $("#phoneNumber").val() === "") {
+            alert("Please enter Name and Phone to Continue.");
+            return false;
+        }
 
 
         var name = $("#fullName").val().trim();
@@ -112,6 +117,7 @@ $(function() {
         var form = document.getElementById("inputForm");
         form.reset();
         $("#loginWindow").modal("hide");
+        return false;
 
     });
 
