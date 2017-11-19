@@ -18,24 +18,27 @@
         <div class="col-xs-12 col-md-12 col-lg-12">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <div class="navbar-header" style="text-align: center;">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                        <h2 class="brand" href="indexmain.html" style="margin-left: 2%">AdventureBuddy</h2>
-                    </div>
-
+                            <h3 class="brand" href="index.html" style="margin-left: 2% text-align: center">AdventureBuddy</h3>
+                        </div>
+                    
+                    
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><button class="btn btn-primary" data-toggle="modal" href="#loginWindow" style="margin - right: 4 px;margin-top: 8px;">Sign In</button></li>
+                        </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><button class="btn btn-primary" data-toggle="modal" href="#loginWindow" style="margin-right: 4px; margin-top: 8px;">Sign In</button>
-                            </li>
                             <li><button class="btn btn-primary" data-toggle="modal" href="#aboutWindow" style="margin-right: 4px; margin-top: 8px;">About</button></li>
                         </ul>
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        
                     </div>
                     <!-- /.navbar-collapse -->
                 </div>
@@ -47,7 +50,7 @@
     <!--</div>-->
 
 
-    <!--Start of hidden Sign in Form-->
+    <!--Start of hidden modal Sign in Form-->
 
     <div class="modal fade" id="loginWindow">
         <div class="modal-dialog">
@@ -79,10 +82,10 @@
             </div>
         </div>
     </div>
-    <!--End hidden Sign in Form -->
+    <!--End hidden Sign in Form Modal -->
 
 
-    <!--About Page-->
+    <!--About Page Modal-->
     <div class="modal fade" id="aboutWindow">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -114,7 +117,14 @@
             </div>
         </div>
     </div>
-    <!--End hidden About us form -->
+    <!--End hidden About us Modal -->
+
+    <!-- Start of "always on top" emergency service contact button -->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" href="#emsContact" value="EMERGENCY!">EMERGENCY!</button>
+        </div>
+    </div>
 
     <!-- Map div -->
     <div class="row" style="height: 100%">
