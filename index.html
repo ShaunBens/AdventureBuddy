@@ -9,99 +9,109 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 
-	
+
 </head>
 
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-				<id="myname">
-					<h1>Adventure Buddy App</h1>
+	<!--<div class="container-fluid">-->
 
-			</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-12 col-lg-12">
+			<nav class="navbar navbar-default" id="navie">
+				<div class="container-fluid">
+					<div class="navbar-header" style="text-align: center;">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="background: #ffffff">
+                              <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                          </button>
+						<h3 class="brand" href="index.html" style="text-align: center">AdventureBuddy</h3>
+					</div>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-				</ul>
 
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="contact.html">Register</a></li>
-					<li class="active"><a href="index.html">Main Page <span class="sr-only">(current)</span></a></li>
-					<li><a href="portfolio.html">Log In</a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
+					<!--Collect the nav links, forms, and other content for toggling-->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left">
+							<li><button class="btn btn-primary" data-toggle="modal" href="#loginWindow" style="margin-top: 8px;">Sign In</button></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><button class="btn btn-primary" data-toggle="modal" href="#aboutWindow" style="margin-top: 8px;">About</button></li>
+						</ul>
+						<!--Brand and toggle get grouped for better mobile display-->
+
+					</div>
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container-fluid -->
+			</nav>
 		</div>
-		<!-- /.container-fluid -->
+	</div>
+
+	<!--</div>-->
 	</nav>
 
+	<!--<div class="container">-->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-1">
 
-			</div>
-			<div class="col-md-6">
-				<div class="row">
-					<h2>Welcome to the Adventure Buddy App</h2>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<div class="map-div">
-							<p>Placeholder Div to place map</p>
-							<div class="maps">
-							</div>
-							<div class="weather">
-								<p>Placeholder div for weather</p>
-							</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2>How It Works</h2>
+					</div>
+					<div class="aboutApp">
+						<div class="panel-body">
+							<p>Upon clicking "Get Started" at the bottom of this box, we will ask to aquire your location information.</p>
+							<p>This information is passed to our servers along with your full name and phone number that you should enter into our "Sign In" box.</p>
+
+							<p>From there, your location is updated every 30 seconds on our servers and if it stops moving for a period of 10 minutes a prompt will pop up asking you if you're OK. If so, just hit "Yes, I'm OK" and the prompt will disappear.</p>
+
+							<p>If no user input is registered within 2 minutes, emergency serivces will be sent your:</p>
+
+							<p>Name<br> Phone Number<br> and Geolocation coordinates</p>
+
+							<p>The emergency services will use this info to track your location and find you A.S.A.P!</p>
+
+							<p>Enjoy our easy to use app and trek on with your personal "AdventureBuddy!"</p>
+							</p>
 						</div>
 					</div>
-					<div class="col-md-8" id="userButtons">
-
-						<button id="onButton">Turn On App</button>
-						<p id="emergencyContact">Call Emergency Contact</p>
-					</div>
 				</div>
 			</div>
-			<div class="col-md-4">
+
+			<!--</div>-->
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
 				<div class="panel panel-default" id="contact">
 					<div class="panel-heading">
-						<h3 class="panel-title">Contact Info</h3>
+						<h2>Contact Info</h2>
 					</div>
-					<div class="panel-body">
-						<p>
-							<form id="contactForm" class="form-horizontal">
-								<div class="form-group">
-									<label class="col-xs-7 control-label">Full name</label>
-									<div class="col-xs-9">
-										<input type="text" class="form-control" name="fName" id="fullName" placeholder="Full name" />
-									</div>
-								</div>
+					<div class="modal-body">
+						<form id="inputForm">
+							<div class="form-group">
+								<label for="validationDefault01">Full Name</label>
+								<input type="text" class="form-control" id="fullName" placeholder="First Last" required />
+							</div>
+							<div class="form-group">
+								<label for="validationDefault02">Phone Number</label>
+								<input type="text" class="form-control" id="phoneNumber" placeholder="XXX-XXX-XXXX" required />
+							</div>
 
-								<div class="form-group">
-									<label class="col-xs-7 control-label">Phone number</label>
-									<div class="col-xs-9">
-										<input type="text" class="form-control" id="phoneNumber" name="pNumber" placeholder="Phone number" />
-										<br><br>
-										<input type="button" value="Submit" id="submitButton">
-									</div>
-								</div>
-							</form>
-						</p>
+							<!-- button -->
+							<div class="modal-footer">
+								<input type="submit" class="btn btn-primary btn-block" id="formSubmit" value="Submit" />
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
-
 		</div>
+	</div>
+
+	</div>
 
 
 
