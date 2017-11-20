@@ -1,0 +1,26 @@
+.brand {
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 5%;
+    position: absolute;
+    text-align: center;
+}
+
+#navie {
+    border: 0px;
+    background: linear-gradient(#3eaeda, #ffffff);
+
+}
+
+.navbar-toggle .collapsed {
+    background: #ffffff;
+}
+
+.navbar-header {
+    text-align: center;
+}
+
+#map {
+    background-color: grey;
+    height: 88vh;
+}
