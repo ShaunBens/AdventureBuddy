@@ -73,7 +73,6 @@ $(function() {
                 position: gLatLng,
                 map: map,
                 title: title,
-                animation: google.maps.Animation.DROP
             };
 
             var marker = new google.maps.Marker(markerOptn);
@@ -120,19 +119,58 @@ $(function() {
         return false;
 
     });
+    var s;
+    var fName;
+    var fPhone;
+    var fLat;
+    var fLng;
 
     database.ref().on("child_added", function(snapshot) {
-        var s = snapshot.val();
+        s = snapshot.val();
+        fName = s.name;
+        fPhone = s.phone;
+        fLat = s.lat;
+        fLng = s.lng;
 
-        var fName = s.name;
-        var fPhone = s.phone;
-        var fLat = s.lat;
-        var fLng = s.lng;
 
         console.log("Name: " + fName);
         console.log("Phone: " + fPhone);
         console.log("Latitude: " + fLat);
         console.log("Longitude: " + fLng);
+    });
+
+    var URL = "https://sandbox.sendpolice.com/v1/alerts?user_key=349dff0af7377e573e305ce9a890cb22";
+    // var body = {
+    //     name: fName,
+    //     phone: fPhone,
+    //     pin: "1234",
+    //     location: {
+    //         lat: fLat,
+    //         lon: fLng,
+    //         accuracy: 5
+    //     }
+    // };
+    var body = {
+        name: "shaun",
+        phone: "555-555-5555",
+        pin: "1234",
+        location: {
+            lat: 34.0909090,
+            lon: -85.0090909,
+            accuracy: 5
+        }
+    };
+    console.log("test");
+    $.ajax({
+        type: "POST",
+        url: URL,
+        data: body,
+        success: function(response) {
+            console.log(response);
+        },
+        error: function() {
+            console.log("error");
+        }
     });
 
 
