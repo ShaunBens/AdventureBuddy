@@ -15,6 +15,9 @@ $(function() {
     }
     $("#create").on('click', event => {
         event.preventDefault();
+        var firstName = $('#firstName').val() || state.firstName;
+        var lastName = $('#lastName').val() || state.lastName;
+        var phoneNumber = $('#phoneNumber').val() || state.phoneNumber;
         var email = $('#email').val() || state.email;
         var password = $('#password').val() || state.password;
         console.log(email, password);
@@ -22,15 +25,28 @@ $(function() {
             .then(user => {
                 state.email = email;
                 state.password = password;
+                state.firstName = firstName;
+                state.lastName = lastName;
+                state.phoneNumber = phoneNumber;
+                var users = {
+                    firstname: firstName,
+                    lastname: lastName,
+                    phonenumber: phoneNumber,
+                    email: email,
+                    password: password,
+                }
                 $('#email').addClass('hidden');
                 $('#password').addClass('hidden');
                 firebase.database().ref('email').push({
                     email,
                 });
-                firebase.database().ref('password').push({
-                    password,
-                })
                 $('#create').trigger('reset');
+
+
+
+                firebase.database().ref('users').push(users);
+
+
 
 
 
