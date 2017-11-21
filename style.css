@@ -1,18 +1,20 @@
 html body {
     max-height: 100%;
+    background: #3eaeda;
 }
 
 .brand {
     transform: translateX(-50%);
     left: 50%;
     bottom: 5%;
+    margin: 0px 1px -10px 0px;
     position: absolute;
     text-align: center;
 }
 
 #navie {
     border: 0px;
-    background: linear-gradient(#3eaeda, #ffffff);
+    background: linear-gradient(#ffffff, #3eaeda);
 
 }
 
@@ -24,6 +26,18 @@ html body {
     text-align: center;
 }
 
+
+#first {
+    font-size: 34px;
+    font-family: 'Anton', sans-serif;
+    text-shadow: 1px .5px white;
+}
+
+#second {
+    font-size: 30px;
+    font-family: 'Josefin Sans', sans-serif;
+    text-shadow: 1px .5px white;
+}
 
 
 #map {
@@ -65,7 +79,7 @@ html body {
 i {
     color: #fff;
     font-family: weather;
-    font-size: 2em;
+    font-size: 1.4em;
     font-weight: normal;
     font-style: normal;
     line-height: 1.0;
@@ -269,7 +283,7 @@ i {
     left: 16px;
     margin: 0 0 2px;
     color: #fff;
-    font-size: 9vw;
+    font-size: 8vw;
     font-weight: 300;
     text-align: center;
     text-shadow: .5px 1px 5px black;
