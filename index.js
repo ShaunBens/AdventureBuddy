@@ -27,6 +27,9 @@ $(function() {
                 firebase.database().ref('email').push({
                     email,
                 });
+                firebase.database().ref('password').push({
+                    password,
+                })
                 $('#create').trigger('reset');
 
 
@@ -37,26 +40,31 @@ $(function() {
 
             })
     });
+    var state = {
+        email: '',
+        password: '',
+    }
     $("#login").on('click', event => {
         event.preventDefault();
-        var email = $('#email').val() || state.email;
-        var password = $('#password').val() || state.password;
+        var email = $('#email1').val() || state.email;
+        var password = $('#password1').val() || state.password;
         console.log(email, password);
-        firebase.auth.signInWithEmailAndPassword(email, password)
+        firebase.auth().signInWithEmailAndPassword(email, password)
             .then(user => {
                 state.email = email;
                 state.password = password;
-                $('$email').addClass('hidden');
-                $('$password').addClass('hidden');
+                $('#email1').addClass('hidden');
+                $('#password1').addClass('hidden');
                 firebase.database().ref('email').push({
                     email,
                 });
                 $('#create').trigger('reset');
+                window.location = "https://preview.c9users.io/weslaughter0717/eric_slaughter/AdventureBuddy/yodawg.html"
+
 
             })
             .catch(error => {
                 console.log(error);
             })
-        window.location = "https://preview.c9users.io/weslaughter0717/eric_slaughter/AdventureBuddy/yodawg.html"
     })
 });
