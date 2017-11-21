@@ -1,12 +1,13 @@
 body {
     background-image: url("bicycle-rider.png");
-    height: 500px;
+    height: 1000px;
     background-size: auto;
     background-position: center;
 }
 
 .login-page {
     width: 360px;
+    height:450px;
     padding: 10% 0 0;
     margin: auto;
 }
@@ -14,8 +15,9 @@ body {
 form {
     position: relative;
     background: rgba(7, 40, 195, 0.8);
+    height:300px;
     max-width: 360px;
-    margin: 0 auto 100px;
+    margin: 50 auto 100px;
     padding: 45px;
     text-align: center;
 }
@@ -23,6 +25,7 @@ form {
 .form input {
     font-family: "Roboto", sans-serif;
     background: red;
+    height: 30px;
     outline: 1;
     width: 100%;
     border: 0;
@@ -36,6 +39,7 @@ form {
     font-family: "Roboto" sans-serif;
     text-transform: uppercase;
     outline: 0;
+    width: 30px;
     width: 100%;
     border: 0;
     color: #ffffff;

@@ -18,7 +18,7 @@ $(function() {
         var email = $('#email').val() || state.email;
         var password = $('#password').val() || state.password;
         console.log(email, password);
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(user => {
                 state.email = email;
                 state.password = password;
@@ -30,10 +30,33 @@ $(function() {
                 $('#create').trigger('reset');
 
 
+
+            })
+            .catch(error => {
+                console.log(error);
+
+            })
+    });
+    $("#login").on('click', event => {
+        event.preventDefault();
+        var email = $('#email').val() || state.email;
+        var password = $('#password').val() || state.password;
+        console.log(email, password);
+        firebase.auth.signInWithEmailAndPassword(email, password)
+            .then(user => {
+                state.email = email;
+                state.password = password;
+                $('$email').addClass('hidden');
+                $('$password').addClass('hidden');
+                firebase.database().ref('email').push({
+                    email,
+                });
+                $('#create').trigger('reset');
+
             })
             .catch(error => {
                 console.log(error);
             })
         window.location = "https://preview.c9users.io/weslaughter0717/eric_slaughter/AdventureBuddy/yodawg.html"
-    });
+    })
 });
