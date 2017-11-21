@@ -111,8 +111,14 @@ $(function() {
 
 
 
-    $("#getStarted").on("click", function() {
+    $("#register").on("click", function() {
         // $("#loginWindow").modal("show");  Commented out due to having changed modal one with login data...hopefully
+
+        if ($("#fullName").val() === "" || $("#phoneNumber").val() === "" || $("#email").val() === "" || $("#password").val() === "") {
+            alert("Please enter Name and Phone to Continue.");
+            return false;
+        }
+
         function copyPosition(position) {
             var gLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
@@ -156,8 +162,8 @@ $(function() {
 
 
     $("#formSubmit").on("click", function(event) {
-
         event.preventDefault();
+
         if ($("#fullName").val() === "" || $("#phoneNumber").val() === "") {
             alert("Please enter Name and Phone to Continue.");
             return false;

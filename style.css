@@ -26,6 +26,9 @@ html body {
     text-align: center;
 }
 
+#howItWorks {
+    margin-bottom: -20px;
+}
 
 #first {
     font-size: 34px;
