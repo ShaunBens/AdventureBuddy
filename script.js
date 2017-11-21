@@ -26,7 +26,6 @@ $(function() {
     var database = firebase.database();
 
 
-
     var lat = "";
     var lng = "";
     var watchID = "";
@@ -53,7 +52,7 @@ $(function() {
             var gLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
             var mapOtn = {
-                zoom: 20,
+                zoom: 15,
                 center: gLatLng,
                 mapTypeId: google.maps.MapTypeId.ROAD
             };
@@ -76,12 +75,7 @@ $(function() {
                 title: title,
             };
 
-            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-            var marker = new google.maps.Marker({
-                position: gLatLng,
-                map: map,
-                icon: iconBase + 'man.png'
-            });
+            var marker = new google.maps.Marker(markerOptn);
 
             var infoWindow = new google.maps.InfoWindow({ content: content, position: gLatLng });
 
@@ -89,7 +83,7 @@ $(function() {
                 infoWindow.open(map);
             });
         }
-        $("#loginWindow").modal("myBtn");
+        $("#loginWindow").modal("show");
 
     });
 

@@ -31,10 +31,10 @@
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav navbar-left">
+						<ul class="nav navbar-nav navbar-right">
 							<li><button class="btn btn-primary" data-toggle="modal" href="#loginWindow" style="margin-top: 8px;">Sign In</button></li>
 						</ul>
-						<ul class="nav navbar-nav navbar-right">
+						<ul class="nav navbar-nav navbar-left">
 							<li><button class="btn btn-primary" data-toggle="modal" href="#aboutWindow" style="margin-top: 8px;">About</button></li>
 						</ul>
 						<!-- Brand and toggle get grouped for better mobile display -->
@@ -46,9 +46,6 @@
 			</nav>
 		</div>
 	</div>
-
-	<!--</div>-->
-
 
 	<!--Start of hidden modal Sign in Form-->
 
@@ -89,12 +86,12 @@
 	<div class="modal fade" id="aboutWindow">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<!-- Header -->
+				<!--Header-->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h3 class="modal-title">How it Works</h3>
 				</div>
-				<!-- Body (form) -->
+				<!--Body (form)-->
 				<div class="modal-body">
 					<p>Upon clicking "Get Started" at the bottom of this box, we will ask to aquire your location information.</p>
 					<p>This information is passed to our servers along with your full name and phone number that you should enter into our "Sign In" box.</p>
@@ -110,9 +107,9 @@
 					<p>Enjoy our easy to use app and trek on with your personal "AdventureBuddy!"</p>
 				</div>
 
-				<!-- button -->
+				<!--button-->
 				<div class="modal-footer">
-					<button type="button" class="btn btn-success btn-block" data-dismiss="modal" href="#inputForm" id="getStarted">Get Started!</button>
+					<button type="button" class="btn btn-success btn-block" data-dismiss="modal" id="getStarted">Get Started!</button>
 				</div>
 			</div>
 		</div>
@@ -121,7 +118,7 @@
 
 	<!-- Start of "always on top" emergency service contact button -->
 	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="EMSbutton">
 			<button type="button" class="btn btn-danger btn-block" data-toggle="modal" href="#emsContact" value="EMERGENCY!">EMERGENCY!</button>
 		</div>
 	</div>
@@ -171,26 +168,32 @@
 	</div>
 
 	<!-- Map div -->
-	<div class="row" style="height: 100%">
+	<section class="row" id="mapRow">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="flex-container">
 				<div class="map-canvas">
 					<div id="map">
-
 					</div>
+					<section id="stylin">
+						<div id="weather">
+
+						</div>
+					</section>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 
+	<!-- Weather Div -->
 
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgIR5-3UJgYWpsx_KHOcBLvA5_tzrs7m0&callback=initMap" async defer></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js "></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js " integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa " crossorigin="anonymous "></script>
-	<script type="text/javascript " src="script.js "></script>
+	<script type="text/javascript " src="script.js"></script>
 
 </body>
 
