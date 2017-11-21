@@ -80,7 +80,7 @@ html body {
 }
 
 i {
-    color: #fff;
+    color: black;
     font-family: weather;
     font-size: 1.4em;
     font-weight: normal;
@@ -285,11 +285,11 @@ i {
     bottom: 8px;
     left: 16px;
     margin: 0 0 2px;
-    color: #fff;
+    color: black;
     font-size: 8vw;
     font-weight: 300;
     text-align: center;
-    text-shadow: .5px 1px 5px black;
+    text-shadow: 1px 1px 30px white;
 }
 
 #weather ul {

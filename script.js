@@ -7,7 +7,7 @@
 //Document ready function
 $(function() {
     // Upon page load, We show our About modal to give the user directions and to grab their location data.
-    // $("#aboutWindow").modal("show");
+    $("#aboutWindow").modal("show");
 
     // Initialize Firebase
     var config = {
@@ -60,31 +60,35 @@ $(function() {
 
         addMarker(map, gLatLng, "Your Location: " + gLatLng, "You Are Here!");
 
+        // Add man Marker to Map
+        function addMarker(map, gLatLng, title, content) {
+            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+            var markerOptn = {
+                position: gLatLng,
+                map: map,
+                title: title,
+                icon: iconBase + 'man.png'
+            };
+
+            var marker = new google.maps.Marker(markerOptn);
+
+            var infoWindow = new google.maps.InfoWindow({ content: content, position: gLatLng });
+
+            google.maps.event.addListener(marker, "click", function() {
+                infoWindow.open(map);
+            });
+        }
+        //End Man Marker
+
         lat = position.coords.latitude;
         lng = position.coords.longitude;
 
     }
+    // End Get Location
 
-    function addMarker(map, gLatLng, title, content) {
-        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        var markerOptn = {
-            position: gLatLng,
-            map: map,
-            title: title,
-            icon: iconBase + 'man.png'
-        };
 
-        var marker = new google.maps.Marker(markerOptn);
 
-        var infoWindow = new google.maps.InfoWindow({ content: content, position: gLatLng });
-
-        google.maps.event.addListener(marker, "click", function() {
-            infoWindow.open(map);
-        });
-    }
-    //End Get Location
-
-    //Get realtime weather from simple weather library(We need it displayed in the bottom left hand corner of the map)
+    //Get realtime weather from simple weather library
     navigator.geolocation.getCurrentPosition(function(position) {
         loadWeather(position.coords.latitude + ',' + position.coords.longitude); //load weather using your lat/lng coordinates
     });
@@ -109,80 +113,69 @@ $(function() {
     }
     // // End Realtime Weather data
 
+    var name = "";
+    var phone = "";
+    var email = "";
+    var password = "";
 
 
     $("#register").on("click", function() {
-        // $("#loginWindow").modal("show");  Commented out due to having changed modal one with login data...hopefully
 
-        if ($("#fullName").val() === "" || $("#phoneNumber").val() === "" || $("#email").val() === "" || $("#password").val() === "") {
-            alert("Please enter Name and Phone to Continue.");
-            return false;
-        }
-
-        function copyPosition(position) {
-            var gLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-            var mapOtn = {
-                zoom: 15,
-                center: gLatLng,
-                mapTypeId: google.maps.MapTypeId.ROAD
-            };
-
-            var Pmap = document.getElementById("map");
-
-            var map = new google.maps.Map(Pmap, mapOtn);
-
-            addMarker(map, gLatLng, "Your Location: " + gLatLng, "You Are Here!");
-
-            lat = position.coords.latitude;
-            lng = position.coords.longitude;
-
-        }
-
-        function addMarker(map, gLatLng, title, content) {
-            var markerOptn = {
-                position: gLatLng,
-                map: map,
-                title: title,
-            };
-
-            var marker = new google.maps.Marker(markerOptn);
-
-            var infoWindow = new google.maps.InfoWindow({ content: content, position: gLatLng });
-
-            google.maps.event.addListener(marker, "click", function() {
-                infoWindow.open(map);
-            });
-        }
-        //End Get Location
-
-    });
-
-
-
-
-    $("#formSubmit").on("click", function(event) {
-        event.preventDefault();
-
-        if ($("#fullName").val() === "" || $("#phoneNumber").val() === "") {
-            alert("Please enter Name and Phone to Continue.");
+        if ($("#fullName").val() === "",
+            $("#phoneNumber").val() === "",
+            $("#email").val() === "",
+            $("#password").val() === "") {
+            alert("Please fill out entire form to continue.");
             return false;
         }
 
 
-        var name = $("#fullName").val().trim();
-        // console.log("Name: " + name);
-        var phone = $("#phoneNumber").val().trim();
-        // console.log("Phone: " + phone);
+        name = $("#fullName").val().trim();
+        console.log("Name: " + name);
+
+        phone = $("#phoneNumber").val().trim();
+        console.log("Phone: " + phone);
+
+        email = $("#email").val().trim();
+        console.log("Email: " + email);
+
+        password = $("#password").val().trim();
+        console.log("Password: " + password);
 
         database.ref().push({
             name: name,
             phone: phone,
+            email: email,
+            password: password,
             lat: lat,
             lng: lng,
             timeAdded: firebase.database.ServerValue.TIMESTAMP
 
         });
+        console.log("complete");
+
+        var form = document.getElementById("inputForm");
+        form.reset();
+        $("#loginWindow").modal("show");
+        // return false;
+
+    });
+
+
+    $("#formSubmit").on("click", function(event) {
+        event.preventDefault();
+
+        if ($("#emailSignIn").val() === "",
+            $("#passwordSignIn").val() === "") {
+            alert("Please enter Name and Phone to Continue.");
+            return false;
+        }
+
+        email = $("#email").val().trim();
+        console.log("Email: " + email);
+        password = $("#password").val().trim();
+        console.log$("Password: " + password);
+
 
         var form = document.getElementById("inputForm");
         form.reset();
@@ -190,6 +183,7 @@ $(function() {
         return false;
 
     });
+    // Begin process to pull data from firebase to use in case of SendPolice is activated
     var s;
     var fName;
     var fPhone;
