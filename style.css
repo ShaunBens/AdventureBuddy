@@ -1,153 +1,317 @@
-
-
-.container-fluid {
-    background-color: #338EFF;
-    color: white;
-    text-align: center;
-
+html body {
+    max-height: 100%;
+    background: #3eaeda;
 }
 
-.icon-bar {
-    background-color: #338EFF;
-    color: white;
-}
-
-.panel-heading {
-    background-color: #338EFF;
-    color: white;
-}
-
-body {
-    background-color: #fff;
-    -webkit-font-smoothing: antialiased;
-    font: normal 14px Roboto, arial, sans-serif;
-}
-
-.container {
-    padding: 25px;
-    position: fixed;
-}
-
-#contactForm {
-    background-color: #EDEDED;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 15px;
-    border-color: #d2d2d2;
-    border-width: 5px;
-    box-shadow: 0 1px 0 #cfcfcf;
-}
-
-h4 {
-    border: 0 solid #fff;
-    border-bottom-width: 1px;
-    padding-bottom: 10px;
+.brand {
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 5%;
+    margin: 0px 1px -10px 0px;
+    position: absolute;
     text-align: center;
 }
 
-.form-control {
-    border-radius: 10px;
+#navie {
+    border: 0px;
+    background: linear-gradient(#ffffff, #3eaeda);
+
 }
 
-.wrapper {
+.navbar-toggle .collapsed {
+    background: #ffffff;
+}
+
+.navbar-header {
     text-align: center;
 }
 
-/* Width at 980px and below */
+#howItWorks {
+    margin-bottom: -20px;
+}
 
-@media screen and (max-width: 980px) {
-    body {
-        background-color: white;
-    }
+#first {
+    font-size: 34px;
+    font-family: 'Anton', sans-serif;
+    text-shadow: 1px .5px white;
+}
 
-    .wrapper {
-        /* Box-model */
-        width: 100%;
-        padding: 20px;
-    }
-
-    .map-div {
-        width: 95%;
-    }
-
-    .weather {
-        width: 50%;
-    }
-
-    #contact {
-        float: right;
-        min-width: 30%;
-
-    }
-
+#second {
+    font-size: 30px;
+    font-family: 'Josefin Sans', sans-serif;
+    text-shadow: 1px .5px white;
 }
 
 
-/* Width at 768px and below */
-
-@media screen and (max-width: 768px) {
-    body {
-        background-color: black;
-    }
-
-    .wrapper {
-        /* Box-model */
-        width: 100%;
-        padding: 20px;
-    }
-
-    .map-div {
-        width: 95%;
-    }
-
-    .weather {
-        width: 50%;
-    }
-
-    .nav {
-        float: left;
-        width: 50%;
-    }
-
-    #contact {
-        clear: both;
-        float: left;
-        min-width: 95%;
-    }
+#map {
+    position: relative;
+    background-color: grey;
+    height: 84vh;
 }
 
-/* Width at 640px and below */
 
-@media screen and (max-width: 640px) {
+/*Weather Style*/
 
-    body {
-        background-color: white;
-    }
+/*#stylin {
+    */
 
-    .wrapper {
-        /* Box-model */
-        width: 100%;
-        padding: 20px;
-    }
+/*    font: 100% 'Open Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
 
-    #contact {
-        clear: both;
-        float: left;
-        width: 50%;
-    }
+/*    background: #1192d3;*/
 
-    .map-div {
-        width: 95%;
-    }
+/*}*/
 
-    .weather {
-        width: 50%;
-    }
-
-    .nav {
-        float: left;
-        width: 50%;
-    }
+@font-face {
+    font-family: 'weather';
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+    url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
+    url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
+    url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
+
+#weather {
+    width: 500px;
+    margin: 0px auto;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+i {
+    color: #fff;
+    font-family: weather;
+    font-size: 1.4em;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.0;
+}
+
+.icon-0:before {
+    content: ":";
+}
+
+.icon-1:before {
+    content: "p";
+}
+
+.icon-2:before {
+    content: "S";
+}
+
+.icon-3:before {
+    content: "Q";
+}
+
+.icon-4:before {
+    content: "S";
+}
+
+.icon-5:before {
+    content: "W";
+}
+
+.icon-6:before {
+    content: "W";
+}
+
+.icon-7:before {
+    content: "W";
+}
+
+.icon-8:before {
+    content: "W";
+}
+
+.icon-9:before {
+    content: "I";
+}
+
+.icon-10:before {
+    content: "W";
+}
+
+.icon-11:before {
+    content: "I";
+}
+
+.icon-12:before {
+    content: "I";
+}
+
+.icon-13:before {
+    content: "I";
+}
+
+.icon-14:before {
+    content: "I";
+}
+
+.icon-15:before {
+    content: "W";
+}
+
+.icon-16:before {
+    content: "I";
+}
+
+.icon-17:before {
+    content: "W";
+}
+
+.icon-18:before {
+    content: "U";
+}
+
+.icon-19:before {
+    content: "Z";
+}
+
+.icon-20:before {
+    content: "Z";
+}
+
+.icon-21:before {
+    content: "Z";
+}
+
+.icon-22:before {
+    content: "Z";
+}
+
+.icon-23:before {
+    content: "Z";
+}
+
+.icon-24:before {
+    content: "E";
+}
+
+.icon-25:before {
+    content: "E";
+}
+
+.icon-26:before {
+    content: "3";
+}
+
+.icon-27:before {
+    content: "a";
+}
+
+.icon-28:before {
+    content: "A";
+}
+
+.icon-29:before {
+    content: "a";
+}
+
+.icon-30:before {
+    content: "A";
+}
+
+.icon-31:before {
+    content: "6";
+}
+
+.icon-32:before {
+    content: "1";
+}
+
+.icon-33:before {
+    content: "6";
+}
+
+.icon-34:before {
+    content: "1";
+}
+
+.icon-35:before {
+    content: "W";
+}
+
+.icon-36:before {
+    content: "1";
+}
+
+.icon-37:before {
+    content: "S";
+}
+
+.icon-38:before {
+    content: "S";
+}
+
+.icon-39:before {
+    content: "S";
+}
+
+.icon-40:before {
+    content: "M";
+}
+
+.icon-41:before {
+    content: "W";
+}
+
+.icon-42:before {
+    content: "I";
+}
+
+.icon-43:before {
+    content: "W";
+}
+
+.icon-44:before {
+    content: "a";
+}
+
+.icon-45:before {
+    content: "S";
+}
+
+.icon-46:before {
+    content: "U";
+}
+
+.icon-47:before {
+    content: "S";
+}
+
+#weather h2 {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    margin: 0 0 2px;
+    color: #fff;
+    font-size: 8vw;
+    font-weight: 300;
+    text-align: center;
+    text-shadow: .5px 1px 5px black;
+}
+
+#weather ul {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+#weather li {
+    background: #ffffff;
+    background: inherit;
+    padding: 2px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+#weather .currently {
+    margin: 0 20px;
+}
+
+/* End Weather Style */
