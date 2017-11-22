@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Adventure Buddy App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styleTest.css">
+
+
+</head>
+
+<body>
+    <!--<div class="container-fluid">-->
+
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <nav class="navbar navbar-default" id="navie">
+                <div class="container-fluid">
+                    <div class="navbar-header" style="text-align: center;">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="background: #ffffff">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                        <h3 class="brand" href="index.html" style="text-align: center"><span id="first">ADVENTURE</span><span id="second">BUDDY</span></h3>
+                    </div>
+
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><button class="btn btn-primary" data-toggle="modal" href="#aboutWindow" style="margin-top: 8px;">About</button></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" id="hideSignOut">
+                            <li><button class="btn btn-primary" id="signOut" style="margin-top: 8px; margin-left: 3px">Sign Out</button></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" id="hideSignIn">
+                            <li><button class="btn btn-primary" data-toggle="modal" href="#loginWindow" style="margin-top: 8px;">Sign In</button></li>
+                        </ul>
+                        <!-- Brand and toggle get grouped for better mobile display -->
+
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+
+    <!--About Page Modal-->
+    <div class="modal fade" id="aboutWindow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">How it Works</h3>
+                </div>
+                <!--Body (form)-->
+                <div class="modal-body" id="howItWorks">
+                    <p>Upon clicking "Get Started" at the bottom of this box, we will ask to aquire your location information.</p>
+                    <p>This information is passed to our servers along with your full name and phone number that you should enter into our "Sign In" box.</p>
+
+                    <p>From there, your location is updated every 30 seconds on our servers and if it stops moving for a period of 10 minutes a prompt will pop up asking you if you're OK. If so, just hit "Yes, I'm OK" and the prompt will disappear.</p>
+
+                    <p>If no user input is registered within 2 minutes, emergency serivces will be sent your:</p>
+
+                    <p>Name<br> Phone Number<br> and Geolocation coordinates</p>
+
+                    <p>The emergency services will use this info to track your location and find you A.S.A.P!</p>
+
+                    <p>Enjoy our easy to use app and trek on with your personal "AdventureBuddy!"</p>
+                </div>
+                <hr>
+                <div class="modal-header">
+                    <h3 class="modal-title" id="loginStyle">Register to begin your Adventure</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="validationDefault01">First Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="First Last" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault01">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="First Last" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault02">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber" placeholder="XXXXXXXXXX" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault03">Email</label>
+                            <input type="email" class="form-control" id="email" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault04">Password</label>
+                            <input type="password" class="form-control" id="password" required />
+                        </div>
+                </div>
+
+                <!--button-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block" data-dismiss="modal" id="register">Register!</button>
+                    <p class="message" id="registeredLogin"> Already Registered? <a data-toggle="modal" href="#loginWindow" id="registered">Login</a></p>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--End hidden About us Modal -->
+
+    <!--Start of hidden modal confirm deatils Form-->
+    <div class="modal fade" id="loginWindow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">Sign In</h3>
+                </div>
+                <!-- Body (form) -->
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="validationDefault01">Email</label>
+                                <input type="email" class="form-control" id="email1" placeholder="Email" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="validationDefault02">Password</label>
+                                <input type="password" class="form-control" id="password1" required />
+                            </div>
+                    </div>
+                </div>
+
+                <!-- button -->
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary btn-block" data-dismiss="modal" id="login" value="Submit" />
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--End hidden Sign in Form Modal -->
+
+    <!-- Start of "always on top" emergency service contact button -->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="EMSbutton">
+            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" href="#emsContact" value="EMERGENCY!">EMERGENCY!</button>
+        </div>
+    </div>
+    <!-- End EMS button -->
+
+    <!-- Begin EMS hidden modal -->
+    <div class="modal fade" id="emsContact">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title" style="text-align: center;">Contact Emergency Services?</h3>
+                </div>
+                <!-- Body (form) -->
+                <div class="modal-body">
+                    <p style="font-weight: bold; font-size: 20px; text-shadow: .7px .5px red; text-align: center;">CLICKING YES WILL IMMEDIATELY SEND OUT A DISTRESS CALL.</p>
+                    <p style="font-weight: bold; font-size: 18px; text-align: center;">Click "Cancel" to stop this request</p>
+                </div>
+                <!-- button -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" style="float: left; padding: 10px 40px">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" href="#confirmEMS" id="contactEMS" style="float: right; padding: 10px 50px">YES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End EMS contact modal -->
+
+    <!-- Begin EMS on their way modal -->
+    <div class="modal fade" id="confirmEMS">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title" style="text-align: center;">STAY WHERE YOU ARE!</h3>
+                </div>
+                <!--Body -->
+                <div class="modal-body">
+                    <p style="font-weight: bold; font-size: 18px; text-align: center;">Emergency Services On Their Way!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map div -->
+    <section class="row" id="mapRow">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="flex-container">
+                <div class="map-canvas">
+                    <div id="map">
+                    </div>
+                    <section id="stylin">
+                        <div id="weather">
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgIR5-3UJgYWpsx_KHOcBLvA5_tzrs7m0&callback=initMap" async defer></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js " integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa " crossorigin="anonymous "></script>
+    <script type="text/javascript " src="scriptTest2.js"></script>
+
+</body>
+
+</html>
