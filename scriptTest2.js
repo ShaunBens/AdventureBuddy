@@ -119,20 +119,17 @@ $(function() {
     // End Realtime Weather data
 
     //Begin Shaun Login
-    // var createUser = {
-    //     firstName: $("#firstName").val().trim(),
-    //     lastName: $("#lastName").val().trim(),
-    //     phoneNumber: $("#phoneNumber").val().trim(),
-    //     email: $("#email").val().trim(),
-    //     password: $("#password").val().trim()
-    // };
+    var firstName;
+    var lastName;
+    var phoneNumber;
+    var loggedIn;
+    var loggingIn;
 
     // Handles the sign up button press.
     $("#register").on("click", function handleSignUp() {
-
-        var firstName = $("#firstName").val().trim();
-        var lastName = $("#lastName").val().trim();
-        var phoneNumber = $("#phoneNumber").val().trim();
+        firstName = $("#firstName").val().trim();
+        lastName = $("#lastName").val().trim();
+        phoneNumber = $("#phoneNumber").val().trim();
         var email = $("#email").val().trim();
         var password = $("#password").val().trim();
 
@@ -147,15 +144,9 @@ $(function() {
         // [START createwithemail]
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(newUsers => {
-                firstName: firstName;
-                lastName: lastName;
-                phoneNumber: phoneNumber;
                 email: email;
                 password: password;
                 var users = {
-                    firstName: firstName,
-                    lastName: lastName,
-                    phoneNumber: phoneNumber,
                     email: email,
                     password: password,
                 };
@@ -187,9 +178,12 @@ $(function() {
         // [START authwithemail]
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(loggedIn => {
+                firstName: firstName;
+                lastName: lastName;
+                phoneNumber: phoneNumber;
                 loggedInEmail: email;
                 loggedInPassword: password;
-                var loggingIn = [email, password];
+                var loggingIn = [firstName, lastName, phoneNumber, email, password];
 
                 firebase.database().ref('loggedInUsers/' + loggedIn.uid).set(loggingIn);
 
@@ -206,12 +200,15 @@ $(function() {
         var user = firebase.auth().currentUser;
         console.log(user);
 
-        user.delete().then(function() {
-            // User deleted.
-        }).catch(function(error) {
-            // An error happened.
-        });
-        console.log(user);
+
+        firebase.database().ref('loggedInUsers/' + loggedIn.uid).delete(loggingIn);
+
+        // user.delete().then(function() {
+        //     // User deleted.
+        // }).catch(function(error) {
+        //     // An error happened.
+        // });
+        // console.log(user);
         $("#hideSignOut").hide();
         $("#hideSignIn").show();
     });
