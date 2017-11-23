@@ -119,17 +119,12 @@ $(function() {
     // End Realtime Weather data
 
     //Begin Shaun Login
-    var firstName;
-    var lastName;
-    var phoneNumber;
-    var loggedIn;
-    var loggingIn;
 
     // Handles the sign up button press.
     $("#register").on("click", function handleSignUp() {
-        firstName = $("#firstName").val().trim();
-        lastName = $("#lastName").val().trim();
-        phoneNumber = $("#phoneNumber").val().trim();
+        var firstName = $("#firstName").val().trim();
+        var lastName = $("#lastName").val().trim();
+        var phoneNumber = $("#phoneNumber").val().trim();
         var email = $("#email").val().trim();
         var password = $("#password").val().trim();
 
@@ -147,11 +142,15 @@ $(function() {
                 email: email;
                 password: password;
                 var users = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    phoneNumber: phoneNumber,
                     email: email,
                     password: password,
+                    timeAdded: firebase.database.ServerValue.TIMESTAMP
                 };
 
-                firebase.database().ref('users/' + newUsers.uid).set(users);
+                firebase.database().ref('users/').push(users);
 
                 console.log("Welcome User: " + users);
             });
@@ -159,6 +158,16 @@ $(function() {
         form.reset();
         $("loginWindow").modal("show");
     });
+
+    // var userID = firebase.auth().currentUser.uid;
+    // return firebase.database().ref('users/' + userID).once('value').then(function(snapshot) {
+    //     var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+    //     console.log(username);
+    // });
+
+    var firstName;
+    var lastName;
+    var phoneNumber;
 
     //Handles the sign in button press.
     $("#login").on("click", function toggleSignIn() {
@@ -174,6 +183,7 @@ $(function() {
             alert("Please fill out email and password to continue.");
             return false;
         }
+
         // Sign in with email and pass.
         // [START authwithemail]
         firebase.auth().signInWithEmailAndPassword(email, password)
@@ -196,19 +206,12 @@ $(function() {
         $("#hideSignIn").hide();
     });
 
-    $("#signOut").on("click", function toggleSignOut() {
-        var user = firebase.auth().currentUser;
-        console.log(user);
-
-
-        firebase.database().ref('loggedInUsers/' + loggedIn.uid).delete(loggingIn);
-
-        // user.delete().then(function() {
-        //     // User deleted.
-        // }).catch(function(error) {
-        //     // An error happened.
-        // });
-        // console.log(user);
+    $("#signOut").on("click", function() {
+        firebase.auth().signOut().then(function() {
+            console.log('Signed Out');
+        }, function(error) {
+            console.error('Sign Out Error', error);
+        });
         $("#hideSignOut").hide();
         $("#hideSignIn").show();
     });
@@ -216,6 +219,8 @@ $(function() {
     //End Shaun Login
 
 
+
+    //SendPolice function starts now
     var s;
     var fFirstName;
     var fLastName;
@@ -269,7 +274,7 @@ $(function() {
         });
 
     });
-
+    //End SendPolice
 
 
 
