@@ -11,7 +11,6 @@ $(function() {
     $("#aboutWindow").modal("show");
     $("#registered").on("click", function() {
         $("#aboutWindow").modal("hide");
-        $("#loginWindow").modal("show");
     });
 
     $("#hideSignOut").hide();
@@ -139,6 +138,9 @@ $(function() {
         // [START createwithemail]
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(newUsers => {
+                firstName: firstName;
+                lastName: lastName;
+                phoneNumber: phoneNumber;
                 email: email;
                 password: password;
                 var users = {
@@ -150,20 +152,14 @@ $(function() {
                     timeAdded: firebase.database.ServerValue.TIMESTAMP
                 };
 
-                firebase.database().ref('users/').push(users);
+                firebase.database().ref('users/' + newUsers.uid).set(users);
 
                 console.log("Welcome User: " + users);
             });
         var form = document.getElementById("registerForm");
         form.reset();
-        $("loginWindow").modal("show");
+        $("#oginWindow").modal("show");
     });
-
-    // var userID = firebase.auth().currentUser.uid;
-    // return firebase.database().ref('users/' + userID).once('value').then(function(snapshot) {
-    //     var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-    //     console.log(username);
-    // });
 
     var firstName;
     var lastName;
@@ -171,7 +167,6 @@ $(function() {
 
     //Handles the sign in button press.
     $("#login").on("click", function toggleSignIn() {
-
         var email = $("#email1").val().trim();
         console.log(email);
 
@@ -188,9 +183,6 @@ $(function() {
         // [START authwithemail]
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(loggedIn => {
-                firstName: firstName;
-                lastName: lastName;
-                phoneNumber: phoneNumber;
                 loggedInEmail: email;
                 loggedInPassword: password;
                 var loggingIn = [firstName, lastName, phoneNumber, email, password];
