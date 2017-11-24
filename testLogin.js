@@ -292,7 +292,7 @@ function initApp() {
             phoneNumber = user.phoneNumber;
             email = user.email;
             userId = user.uid;
-            console.log("Current Logged in User ID: " + user.uid);
+            console.log(user.uid);
             $("#hideAbout").hide();
             $("#hideSignIn").hide();
             $("#aboutWindow").hide();
@@ -316,7 +316,7 @@ function initApp() {
 //SendPolice function starts now
 $("#contactEMS").click(function() {
     userId = firebase.auth().currentUser.uid;
-    return firebase.database().ref('users/' + userId.user).once('value').then(function(snapshot) {
+    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
         var userInfo = (snapshot.val() && snapshot.val().userId.firstName.lastName.phoneNumber);
         console.log(userInfo);
     });

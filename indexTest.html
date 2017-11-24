@@ -32,8 +32,8 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-left">
-                            <li><button class="btn btn-primary" data-toggle="modal" href="#aboutWindow" style="margin-top: 8px;">About</button></li>
+                        <ul class="nav navbar-nav navbar-left" id="hideAbout">
+                            <li><button class="btn btn-primary" data-toggle="modal" href="#aboutWindow" id="aboutBtn" style="margin-top: 8px;">About</button></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right" id="hideSignOut">
                             <li><button class="btn btn-primary" id="signOut" style="margin-top: 8px; margin-left: 3px">Sign Out</button></li>
@@ -114,7 +114,7 @@
     </div>
     <!--End hidden About us Modal -->
 
-    <!--Start of hidden modal confirm deatils Form-->
+    <!--Start of hidden modal sign in Form-->
     <div class="modal fade" id="loginWindow">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -151,7 +151,7 @@
     <!-- Start of "always on top" emergency service contact button -->
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="EMSbutton">
-            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" href="#emsContact" value="EMERGENCY!">EMERGENCY!</button>
+            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" href="#emsContact" id="contactEMS" value="EMERGENCY!">EMERGENCY!</button>
         </div>
     </div>
     <!-- End EMS button -->
@@ -173,7 +173,7 @@
                 <!-- button -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal" style="float: left; padding: 10px 40px">Cancel</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" href="#confirmEMS" id="contactEMS" style="float: right; padding: 10px 50px">YES</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" href="#confirmEMS" id="EMSnow" style="float: right; padding: 10px 50px">YES</button>
                 </div>
             </div>
         </div>
@@ -205,6 +205,10 @@
             <div class="flex-container">
                 <div class="map-canvas">
                     <div id="map">
+                        <div class="container-fluid">
+                            <h1>MAP LOADING!</h1>
+                        </div>
+
                     </div>
                     <section id="stylin">
                         <div id="weather">

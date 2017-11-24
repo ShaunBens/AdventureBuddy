@@ -3,6 +3,13 @@ html body {
     background: #3eaeda;
 }
 
+h1 {
+    position: relative;
+    text-align: center;
+    transform: translateY(500%);
+
+}
+
 .brand {
     transform: translateX(-50%);
     left: 50%;
@@ -14,6 +21,9 @@ html body {
 
 #navie {
     border: 0px;
+    background: -webkit-linear-gradient(#ffffff, #3eaeda);
+    background: -moz-linear-gradient(#ffffff, #3eaeda);
+    background: -o-linear-gradient(#ffffff, #3eaeda);
     background: linear-gradient(#ffffff, #3eaeda);
 
 }
@@ -49,6 +59,7 @@ html body {
 
 
 #map {
+    display: block;
     position: relative;
     background-color: grey;
     height: 84vh;
