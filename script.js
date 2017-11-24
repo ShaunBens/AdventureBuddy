@@ -76,72 +76,24 @@ $(function() {
             console.log(lng,"lng");
             
             // user is moving so nothing is wron
-            // if ( latNew > (Math.abs(lat) + .001) || latNew <  (Math.abs(lat) - .001) || lngNew > (Math.abs(lng) + .001) || lngNew < (Math.abs(lng) -.001) )  {
+           // if ( latNew > (Math.abs(lat) + .00001) || latNew <  (Math.abs(lat) - .00001) || lngNew > (Math.abs(lng) + .00001) || lngNew < (Math.abs(lng) -.00001) )  {
              
             if (latNew !== lat || lngNew !== lng) {
             console.log("latNew or longNew");
             }  
             //user is stopped, start timer
-            else {
-                console.log("else");
-               // setTimeout(function () {
+            else  
+             console.log("else");
+                setTimeout(function () {
                     $("#myModal").modal('show');
-              //  }, 5000);
-            }
-            
-            navigator.geolocation.getCurrentPosition(function(position) {
-                
-                var pos = {
-                         coords: {
-                              latitude: position.coords.latitude,
-                              longitude: position.coords.longitude
-                          }
-                         
-                };
-                setTimeout(copyPosition(pos), 5000);
-            });    
-           // var oldcoord = {
-          //  coords: {
-            //     latitude:35.2283817,
-            //     longitude:-80.83499119999999
-            // }
-            
-         // };
-          //  setTimeout(copyPosition(), 5000);
+              }, 5000);
+    
             
             
             lat = position.coords.latitude;
             lng = position.coords.longitude;
             
 }
-            
-
-//
-// 
-
-    // setTimeout(function () {
-    //      $("#myModal").modal('show');
-    //      },1800*30);
-
-    // function copyPosition(position) {
-    //     var gLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-    //     var mapOtn = {
-    //         zoom: 15,
-    //         center: gLatLng,
-    //         mapTypeId: google.maps.MapTypeId.ROAD
-    //     };
-
-    //     var Pmap = document.getElementById("map");
-
-    //     var map = new google.maps.Map(Pmap, mapOtn);
-
-    //     addMarker(map, gLatLng, "Your Location: " + gLatLng, "You Are Here!");
-        
-    //     lat = position.coords.latitude;
-    //     lng = position.coords.longitude;
-
-    // }
 
     function addMarker(map, gLatLng, title, content) {
         var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
@@ -304,5 +256,5 @@ $(function() {
 
 
 
-
-}); // document ready function end
+});
+// document ready function end
