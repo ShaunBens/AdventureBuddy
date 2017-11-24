@@ -124,15 +124,9 @@ $("#aboutBtn").click(function() {
 });
 
 //Begin Shaun Login
-var firstName;
-var lastName;
+var fullName;
 var phoneNumber;
 var email;
-var loggedInUser = {
-    firstName,
-    lastName,
-    phoneNumber
-};
 var user;
 var userId;
 var uid;
@@ -141,11 +135,8 @@ var uid;
  * Handles the sign up button press.
  */
 $("#register").click(function handleSignUp() {
-    firstName = $("#firstName").val().trim();
-    // console.log(firstName);
-
-    lastName = $("#lastName").val().trim();
-    // console.log(lastName);
+    fullName = $("#fullName").val().trim();
+    // console.log(fullName);
 
     phoneNumber = $("#phoneNumber").val().trim();
     // console.log(phoneNumber);
@@ -186,32 +177,32 @@ $("#register").click(function handleSignUp() {
         })
         .then(newUsers => {
             var allUsers = {
-                firstName,
-                lastName,
+                fullName,
                 phoneNumber,
                 email,
                 password,
-                UID: uid,
+                // UID: uid,
                 timeAdded: firebase.database.ServerValue.TIMESTAMP
             };
 
             firebase.database().ref('users/' + newUsers.uid).set(allUsers);
 
-            console.log("Welcome User: " + allUsers.firstName);
+            console.log("Welcome User: " + allUsers.fullName);
         });
+    var form = document.getElementById("registerForm");
+    form.reset();
+
     $("#aboutWindow").hide();
-    $("#loginWindow").show();
+    // $("#loginWindow").show();
+    $("#hideSignOut").show();
 
 
     // [END createwithemail]
 });
 
-
-// var userId = firebase.auth().currentUser.uid;
-// return firebase.database().ref("users/" + userId).once("value").then(function(snapshot) {
-//     loggedInUser = (snapshot.val() && snapshot.val().loggedInUser);
-//     console.log("New Registered User: " + loggedInUser);
-// });
+$("#registered").click(function() {
+    $("#aboutWindow").modal("hide");
+})
 
 /**
  * Handles the sign in button press.
@@ -223,10 +214,7 @@ $("#login").click(function toggleSignIn() {
         // [END signout]
     }
     else {
-        // var firstName = $("#firstName").val().trim();
-        // var lastName = $("#lastName").val().trim();
-        // var phoneNumner = $("#phoneNumber").val().trim();
-        var email = $("#email1").val().trim();
+        email = $("#email1").val().trim();
         var password = $("#password1").val().trim();
         if (email.length < 2) {
             alert('Please enter an email address.');
@@ -251,11 +239,13 @@ $("#login").click(function toggleSignIn() {
             }
             console.log(error);
             // [END_EXCLUDE]
-
+            var form = document.getElementById("inputForm");
+            form.reset();
         });
         // [END authwithemail]
 
     }
+
     $("#hideSignIn").hide();
     $("#hideSignOut").show();
 
@@ -287,15 +277,16 @@ function initApp() {
 
         if (user) {
             // User is signed in.
-            firstName = user.firstName;
-            lastName = user.lastName;
+            fullName = user.fullName;
             phoneNumber = user.phoneNumber;
             email = user.email;
             userId = user.uid;
-            console.log("Current Logged in User ID: " + user.uid);
+            console.log("Current Logged in User ID: " + userId);
             $("#hideAbout").hide();
             $("#hideSignIn").hide();
-            $("#aboutWindow").hide();
+            // $("#aboutWindow").hide();
+            $("#contactEMS").show();
+            $("#loginWindow").modal("hide");
         }
         else {
             // User is signed out.
@@ -303,6 +294,7 @@ function initApp() {
             $("#hideAbout").show();
             $("#aboutWindow").modal("show");
             $("#hideSignOut").hide();
+            $("#contactEMS").hide();
         }
     });
 }
@@ -314,21 +306,39 @@ function initApp() {
 
 
 //SendPolice function starts now
+
+var fFullName;
+var fPhone;
+var userInfo
+
+
 $("#contactEMS").click(function() {
     userId = firebase.auth().currentUser.uid;
-    return firebase.database().ref('users/' + userId.user).once('value').then(function(snapshot) {
-        var userInfo = (snapshot.val() && snapshot.val().userId.firstName.lastName.phoneNumber);
+
+    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+        var s = snapshot.val();
+        fFullName = s.fullName;
+        fPhone = s.phoneNumber;
+        var userInfo = ({
+            fFullName,
+            fPhone
+
+        });
+        console.log(userId);
         console.log(userInfo);
     });
 
+});
+
+$("#cancelEMS").click(function() {
+    console.log("EMS request cancelled.");
 });
 
 $("#EMSnow").on("click", function() {
 
     var URL = "https://sandbox.sendpolice.com/v1/alerts?user_key=349dff0af7377e573e305ce9a890cb22";
     var body = {
-        firstName: fFirstName,
-        lastName: fLastName,
+        name: fFullName,
         phone: fPhone,
         pin: "1234",
         location: {
@@ -338,7 +348,7 @@ $("#EMSnow").on("click", function() {
         }
     };
 
-    console.log("test");
+    console.log("SendPolice Testing");
     $.ajax({
         type: "POST",
         url: URL,
