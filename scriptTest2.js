@@ -13,6 +13,7 @@ $(function() {
     // $("#aboutWindow").modal("show");
 
     initApp();
+    // positionTimer();
 }); // document ready function end
 
 
@@ -41,7 +42,7 @@ function getLocation() {
         var optn = {
             enableHighAccuracy: true,
             timeout: Infinity,
-            maximumAge: 5000
+            maximumAge: 0
         };
         watchID = navigator.geolocation.watchPosition(copyPosition);
     }
@@ -122,6 +123,7 @@ function loadWeather(location, woeid) {
 $("#aboutBtn").click(function() {
     $("#aboutWindow").modal("show");
 });
+
 
 //Begin Shaun Login
 var fullName;
@@ -298,12 +300,7 @@ function initApp() {
         }
     });
 }
-
-
-
 //End Shaun Login
-
-
 
 //SendPolice function starts now
 
@@ -312,54 +309,57 @@ var fPhone;
 var userInfo
 
 
-$("#contactEMS").click(function() {
-    userId = firebase.auth().currentUser.uid;
+$("#contactEMS").click(
+    function contactEMS() {
+        userId = firebase.auth().currentUser.uid;
 
-    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
-        var s = snapshot.val();
-        fFullName = s.fullName;
-        fPhone = s.phoneNumber;
-        var userInfo = ({
-            fFullName,
-            fPhone
+        return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+            var s = snapshot.val();
+            fFullName = s.fullName;
+            fPhone = s.phoneNumber;
+            var userInfo = ({
+                fFullName,
+                fPhone
 
+            });
+            console.log(userId);
+            console.log(userInfo);
         });
-        console.log(userId);
-        console.log(userInfo);
-    });
 
-});
+    });
 
 $("#cancelEMS").click(function() {
     console.log("EMS request cancelled.");
 });
 
-$("#EMSnow").on("click", function() {
+$("#EMSnow").on("click",
+    function EMSnow() {
 
-    var URL = "https://sandbox.sendpolice.com/v1/alerts?user_key=349dff0af7377e573e305ce9a890cb22";
-    var body = {
-        name: fFullName,
-        phone: fPhone,
-        pin: "1234",
-        location: {
-            lat: lat,
-            lon: lng,
-            accuracy: 5
-        }
-    };
+        var URL = "https://sandbox.sendpolice.com/v1/alerts?user_key=349dff0af7377e573e305ce9a890cb22";
+        var body = {
+            name: fFullName,
+            phone: fPhone,
+            pin: "1234",
+            location: {
+                lat: lat,
+                lon: lng,
+                accuracy: 5
+            }
+        };
 
-    console.log("SendPolice Testing");
-    $.ajax({
-        type: "POST",
-        url: URL,
-        data: body,
-        success: function(response) {
-            console.log(response);
-        },
-        error: function() {
-            console.log("error");
-        }
+        console.log("SendPolice Testing");
+        $.ajax({
+            type: "POST",
+            url: URL,
+            data: body,
+            success: function(response) {
+                console.log(response);
+                console.log("SendPolice Successful");
+            },
+            error: function() {
+                console.log("error");
+            }
+        });
+
     });
-
-});
 //End SendPolice
