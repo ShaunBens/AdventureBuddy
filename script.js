@@ -7,13 +7,10 @@
 /* global position */
 //Document ready function
 $(function() {
-    // Upon page load, We show our About modal to give the user directions and to grab their location data.
-
-
-    // $("#aboutWindow").modal("show");
+    // Upon page load, We check if a user is logged in and grab our location.
 
     initApp();
-    // positionTimer();
+    getLocation();
 }); // document ready function end
 
 
@@ -34,7 +31,8 @@ var database = firebase.database();
 
 var lat = "";
 var lng = "";
-var watchID = "";
+// var watchID = "";
+
 
 //Get Location upon page load
 function getLocation() {
@@ -42,17 +40,18 @@ function getLocation() {
         var optn = {
             enableHighAccuracy: true,
             timeout: Infinity,
-            maximumAge: 0
+            maximumAge: 5000
         };
-        watchID = navigator.geolocation.watchPosition(copyPosition);
+        console.log("Map Refresh");
+
+        navigator.geolocation.watchPosition(copyPosition);
     }
     else {
         alert("Geolocation is not supported by this browser.");
     }
-
 }
 
-getLocation();
+// getLocation();
 
 function copyPosition(position) {
     var gLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -69,30 +68,59 @@ function copyPosition(position) {
 
     addMarker(map, gLatLng, "Your Location: " + gLatLng, "You Are Here!");
 
-    // Add man Marker to Map
-    function addMarker(map, gLatLng, title, content) {
-        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        var markerOptn = {
-            position: gLatLng,
-            map: map,
-            title: title,
-            icon: iconBase + 'man.png'
-        };
 
-        var marker = new google.maps.Marker(markerOptn);
+    var latNew = "";
 
-        var infoWindow = new google.maps.InfoWindow({ content: content, position: gLatLng });
+    var lngNew = "";
 
-        google.maps.event.addListener(marker, "click", function() {
-            infoWindow.open(map);
-        });
+    latNew = position.coords.latitude;
+    lngNew = position.coords.longitude;
+
+    console.log(latNew, "latNew");
+    console.log(lngNew, "lngNew");
+    console.log(lat, "lat");
+    console.log(lng, "lng");
+
+    // user is moving so nothing is wrong
+    // if (latNew > (Math.abs(lat) + .00001) || latNew < (Math.abs(lat) - .00001) || lngNew > (Math.abs(lng) + .00001) || lngNew < (Math.abs(lng) - .00001)) {
+
+    if (latNew !== lat || lngNew !== lng) {
+        console.log("latNew or longNew");
     }
-    //End Man Marker
+
+    //user is stopped, start timer
+    else {
+        console.log("else");
+        setTimeout(function() {
+            $("#youOK").modal('show');
+        }, 5000);
+
+    }
 
     lat = position.coords.latitude;
     lng = position.coords.longitude;
 
 }
+
+// Add man Marker to Map
+function addMarker(map, gLatLng, title, content) {
+    var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+    var markerOptn = {
+        position: gLatLng,
+        map: map,
+        title: title,
+        icon: iconBase + 'man.png'
+    };
+
+    var marker = new google.maps.Marker(markerOptn);
+
+    var infoWindow = new google.maps.InfoWindow({ content: content, position: gLatLng });
+
+    google.maps.event.addListener(marker, "click", function() {
+        infoWindow.open(map);
+    });
+}
+//End Man Marker
 // End Get Location
 
 //Get realtime weather from simple weather library
@@ -250,6 +278,7 @@ $("#login").click(function toggleSignIn() {
 
     $("#hideSignIn").hide();
     $("#hideSignOut").show();
+    console.log("Lattitude: " + lat, "Longitude: " + lng);
 
 });
 
@@ -283,7 +312,9 @@ function initApp() {
             phoneNumber = user.phoneNumber;
             email = user.email;
             userId = user.uid;
+            getLocation();
             console.log("Current Logged in User ID: " + userId);
+            // console.log("Lattitude: " + lat, "Longitude: " + lng);
             $("#hideAbout").hide();
             $("#hideSignIn").hide();
             // $("#aboutWindow").hide();
@@ -297,16 +328,118 @@ function initApp() {
             $("#aboutWindow").modal("show");
             $("#hideSignOut").hide();
             $("#contactEMS").hide();
+            // navigator.geolocation.clearWatch();
         }
     });
 }
 //End Shaun Login
 
+// Timer to send police on no movement
+
+$("#youOK").on('shown.bs.modal', function() {
+    // $('#youOK').modal('show');
+    console.log('shown');
+    startTimer();
+    decrement();
+    contactEMS();
+});
+
+var count = 11;
+var intervalId;
+
+function startTimer() {
+    intervalId = setInterval(decrement, 1000);
+}
+
+
+
+function decrement() {
+    --count;
+    // minutes = (minutes < 10) ? minutes : minutes;
+    $('#showTimer').text("Time Remaining: " + count + " Seconds");
+    console.log(count);
+
+    if (count === 0) {
+        EMSnow();
+        stop();
+        $("#youOK").hide();
+        reset();
+        $("#confirmEMS").show();
+    }
+    else {
+        $("#imOK").click(function() {
+            stop();
+            // mapRefresh();
+            reset();
+            $("#youOK").hide();
+        });
+    }
+}
+
+function stop() {
+    clearInterval(intervalId);
+}
+
+function reset() {
+    count = 10;
+    $("#showTimer").html("Time Remaining: " + count + " Seconds");
+}
+
+function contactEMS() {
+    userId = firebase.auth().currentUser.uid;
+
+    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+        var s = snapshot.val();
+        fFullName = s.fullName;
+        fPhone = s.phoneNumber;
+        var userInfo = ({
+            fFullName,
+            fPhone
+
+        });
+        console.log(userId);
+        console.log(userInfo);
+    });
+
+}
+
+function EMSnow() {
+
+    var URL = "https://sandbox.sendpolice.com/v1/alerts?user_key=349dff0af7377e573e305ce9a890cb22";
+    var body = {
+        name: fFullName,
+        phone: fPhone,
+        pin: "1234",
+        location: {
+            lat: lat,
+            lon: lng,
+            accuracy: 5
+        }
+    };
+
+    console.log("SendPolice Testing");
+    $.ajax({
+        type: "POST",
+        url: URL,
+        data: body,
+        success: function(response) {
+            console.log(response);
+            console.log("SendPolice Successful");
+        },
+        error: function() {
+            console.log("error");
+        }
+    });
+
+}
+
+
 //SendPolice function starts now
 
 var fFullName;
 var fPhone;
-var userInfo
+var userInfo;
+
 
 
 $("#contactEMS").click(
