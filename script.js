@@ -68,34 +68,33 @@ function copyPosition(position) {
 
     addMarker(map, gLatLng, "Your Location: " + gLatLng, "You Are Here!");
 
+    // var latNew = "";
 
-    var latNew = "";
+    // var lngNew = "";
 
-    var lngNew = "";
+    // latNew = position.coords.latitude;
+    // lngNew = position.coords.longitude;
 
-    latNew = position.coords.latitude;
-    lngNew = position.coords.longitude;
+    // console.log(latNew, "latNew");
+    // console.log(lngNew, "lngNew");
+    // console.log(lat, "lat");
+    // console.log(lng, "lng");
 
-    console.log(latNew, "latNew");
-    console.log(lngNew, "lngNew");
-    console.log(lat, "lat");
-    console.log(lng, "lng");
+    // // user is moving so nothing is wrong
+    // // if (latNew > (Math.abs(lat) + .00001) || latNew < (Math.abs(lat) - .00001) || lngNew > (Math.abs(lng) + .00001) || lngNew < (Math.abs(lng) - .00001)) {
 
-    // user is moving so nothing is wrong
-    // if (latNew > (Math.abs(lat) + .00001) || latNew < (Math.abs(lat) - .00001) || lngNew > (Math.abs(lng) + .00001) || lngNew < (Math.abs(lng) - .00001)) {
+    // if (latNew !== lat || lngNew !== lng) {
+    //     console.log("latNew or longNew");
+    // }
 
-    if (latNew !== lat || lngNew !== lng) {
-        console.log("latNew or longNew");
-    }
+    // //user is stopped, start timer
+    // else {
+    //     console.log("else");
+    //     setTimeout(function() {
+    //         $("#youOK").modal('show');
+    //     }, 5000);
 
-    //user is stopped, start timer
-    else {
-        console.log("else");
-        setTimeout(function() {
-            $("#youOK").modal('show');
-        }, 5000);
-
-    }
+    // }
 
     lat = position.coords.latitude;
     lng = position.coords.longitude;
@@ -312,7 +311,7 @@ function initApp() {
             phoneNumber = user.phoneNumber;
             email = user.email;
             userId = user.uid;
-            getLocation();
+            // getLocation();
             console.log("Current Logged in User ID: " + userId);
             // console.log("Lattitude: " + lat, "Longitude: " + lng);
             $("#hideAbout").hide();
@@ -336,102 +335,102 @@ function initApp() {
 
 // Timer to send police on no movement
 
-$("#youOK").on('shown.bs.modal', function() {
-    // $('#youOK').modal('show');
-    console.log('shown');
-    startTimer();
-    decrement();
-    contactEMS();
-});
+// $("#youOK").on('click', function() {
+//     // $('#youOK').modal('show');
+//     console.log('shown');
+//     startTimer();
+//     decrement();
+//     contactEMS();
+// });
 
-var count = 11;
-var intervalId;
+// var count = 11;
+// var intervalId;
 
-function startTimer() {
-    intervalId = setInterval(decrement, 1000);
-}
+// function startTimer() {
+//     intervalId = setInterval(decrement, 1000);
+// }
 
 
 
-function decrement() {
-    --count;
-    // minutes = (minutes < 10) ? minutes : minutes;
-    $('#showTimer').text("Time Remaining: " + count + " Seconds");
-    console.log(count);
+// function decrement() {
+//     --count;
+//     // minutes = (minutes < 10) ? minutes : minutes;
+//     $('#showTimer').text("Time Remaining: " + count + " Seconds");
+//     console.log(count);
 
-    if (count === 0) {
-        EMSnow();
-        stop();
-        $("#youOK").hide();
-        reset();
-        $("#confirmEMS").show();
-    }
-    else {
-        $("#imOK").click(function() {
-            stop();
-            // mapRefresh();
-            reset();
-            $("#youOK").hide();
-        });
-    }
-}
+//     if (count === 0) {
+//         EMSnow();
+//         stop();
+//         $("#youOK").hide();
+//         reset();
+//         $("#confirmEMS").show();
+//     }
+//     else {
+//         $("#imOK").click(function() {
+//             stop();
+//             // mapRefresh();
+//             reset();
+//             $("#youOK").hide();
+//         });
+//     }
+// }
 
-function stop() {
-    clearInterval(intervalId);
-}
+// function stop() {
+//     clearInterval(intervalId);
+// }
 
-function reset() {
-    count = 10;
-    $("#showTimer").html("Time Remaining: " + count + " Seconds");
-}
+// function reset() {
+//     count = 10;
+//     $("#showTimer").html("Time Remaining: " + count + " Seconds");
+// }
 
-function contactEMS() {
-    userId = firebase.auth().currentUser.uid;
+// function contactEMS() {
+//     userId = firebase.auth().currentUser.uid;
 
-    return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
-        var s = snapshot.val();
-        fFullName = s.fullName;
-        fPhone = s.phoneNumber;
-        var userInfo = ({
-            fFullName,
-            fPhone
+//     return firebase.database().ref('users/' + userId).once('value').then(function(snapshot) {
+//         var s = snapshot.val();
+//         fFullName = s.fullName;
+//         fPhone = s.phoneNumber;
+//         var userInfo = ({
+//             fFullName,
+//             fPhone
 
-        });
-        console.log(userId);
-        console.log(userInfo);
-    });
+//         });
+//         console.log(userId);
+//         console.log(userInfo);
+//     });
 
-}
+// }
 
-function EMSnow() {
+// function EMSnow() {
 
-    var URL = "https://sandbox.sendpolice.com/v1/alerts?user_key=349dff0af7377e573e305ce9a890cb22";
-    var body = {
-        name: fFullName,
-        phone: fPhone,
-        pin: "1234",
-        location: {
-            lat: lat,
-            lon: lng,
-            accuracy: 5
-        }
-    };
+//     var URL = "https://sandbox.sendpolice.com/v1/alerts?user_key=349dff0af7377e573e305ce9a890cb22";
+//     var body = {
+//         name: fFullName,
+//         phone: fPhone,
+//         pin: "1234",
+//         location: {
+//             lat: lat,
+//             lon: lng,
+//             accuracy: 5
+//         }
+//     };
 
-    console.log("SendPolice Testing");
-    $.ajax({
-        type: "POST",
-        url: URL,
-        data: body,
-        success: function(response) {
-            console.log(response);
-            console.log("SendPolice Successful");
-        },
-        error: function() {
-            console.log("error");
-        }
-    });
+//     console.log("SendPolice Testing");
+//     $.ajax({
+//         type: "POST",
+//         url: URL,
+//         data: body,
+//         success: function(response) {
+//             console.log(response);
+//             console.log("SendPolice Successful");
+//         },
+//         error: function() {
+//             console.log("error");
+//         }
+//     });
 
-}
+// }
 
 
 //SendPolice function starts now
