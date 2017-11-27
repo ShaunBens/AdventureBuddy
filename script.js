@@ -148,7 +148,7 @@ function loadWeather(location, woeid) {
 // End Realtime Weather data
 
 $("#aboutBtn").click(function() {
-    $("#aboutWindow").modal("show");
+    $("#aboutWindow").show();
 });
 
 
@@ -231,7 +231,7 @@ $("#register").click(function handleSignUp() {
 
 $("#registered").click(function() {
     $("#aboutWindow").modal("hide");
-})
+});
 
 /**
  * Handles the sign in button press.
