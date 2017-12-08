@@ -1,5 +1,8 @@
 # AdventureBuddy
 
+## Live Sandbox App: 
+https://shaunbens.github.io/AdventureBuddy/
+
 Adventure buddy is an app that will help you on your adventures.
 
 The user is greeted by a "How it Works" page and a register form. Fill out this form
